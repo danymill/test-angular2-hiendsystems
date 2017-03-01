@@ -8,11 +8,13 @@ const APP_ROUTES: Routes = [
   {
     path: '',
     component: RegisterComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: { title: 'Register'}
   },
   {
     path: 'register-success',
-    component: RegisterSuccessComponent
+    component: RegisterSuccessComponent,
+    data: { title: 'Confirmation'}
   },
   {
     path: '**',
