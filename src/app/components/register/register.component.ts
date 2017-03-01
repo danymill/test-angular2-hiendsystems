@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 
 @Component({
   selector: 'hst-register',
@@ -8,10 +8,15 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  private submitted: boolean = false;
 
   constructor(private formBuilder: FormBuilder) {
-    this.registerForm = formBuilder.group({
-      userData: formBuilder.group({
+
+  }
+
+  ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      userData: this.formBuilder.group({
         username: ['', Validators.required],
         login: ['', Validators.required],
         email: ['',[
@@ -19,14 +24,31 @@ export class RegisterComponent implements OnInit {
           Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
         ]],
       }),
-      passwords: formBuilder.group({
-        password: ['', Validators.required],
-        rpassword: ['', Validators.required]
+      passwords: this.formBuilder.group({
+        password: ['', [
+          Validators.required,
+          Validators.minLength(4)
+        ]],
+        rpassword: ['', [
+          Validators.required,
+          this.isEqualPassword.bind(this)
+        ]]
       })
     });
   }
 
-  ngOnInit() {
+  isEqualPassword(control: FormControl): {[s: string]: boolean} {
+    if (!this.registerForm) {
+      return {passwordsNotMatch: true};
+    }
+    if (control.value !== this.registerForm.controls['passwords']['controls']['password'].value) {
+      return {passwordsNotMatch: true};
+    }
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    console.log(this.registerForm);
   }
 
 }
