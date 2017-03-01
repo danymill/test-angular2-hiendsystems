@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
         login: ['', Validators.required],
         email: ['',[
           Validators.required,
-          Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+          this.isEmail
         ]],
       }),
       passwords: this.formBuilder.group({
@@ -35,6 +35,12 @@ export class RegisterComponent implements OnInit {
         ]]
       })
     });
+  }
+
+  isEmail(control: FormControl): {[s: string]: boolean} {
+    if (!control.value.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
+      return {noEmail: true};
+    }
   }
 
   isEqualPassword(control: FormControl): {[s: string]: boolean} {
