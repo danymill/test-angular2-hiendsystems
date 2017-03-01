@@ -24,16 +24,14 @@ export class RegisterComponent implements OnInit {
           this.isEmail
         ]],
       }),
-      passwords: this.formBuilder.group({
-        password: ['', [
-          Validators.required,
-          Validators.minLength(4)
-        ]],
-        rpassword: ['', [
-          Validators.required,
-          this.isEqualPassword.bind(this)
-        ]]
-      })
+      password: ['', [
+        Validators.required,
+        Validators.minLength(4)
+      ]],
+      rpassword: ['', [
+        Validators.required,
+        this.isEqualPassword.bind(this)
+      ]]
     });
   }
 
@@ -47,7 +45,7 @@ export class RegisterComponent implements OnInit {
     if (!this.registerForm) {
       return {passwordsNotMatch: true};
     }
-    if (control.value !== this.registerForm.controls['passwords']['controls']['password'].value) {
+    if (control.value !== this.registerForm.controls['password'].value) {
       return {passwordsNotMatch: true};
     }
   }

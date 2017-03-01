@@ -30,25 +30,23 @@
               *ngIf="submitted && !registerForm.controls['userData'].controls['email'].valid">Wrong email</div>
     </div>
   </div>
-  <div formGroupName="passwords">
-    <div class="form-group" [ngClass]="{'has-danger': submitted && !registerForm.controls['passwords'].controls['password'].valid}">
-      <label for="password">Password</label>
-      <input type="password"
-             class="form-control"
-             formControlName="password"
-             id="password">
-      <div class="form-control-feedback"
-           *ngIf="submitted && !registerForm.controls['passwords'].controls['password'].valid">Password can't be less then 4 letters</div>
-    </div>
-    <div class="form-group" [ngClass]="{'has-danger': submitted && !registerForm.controls['passwords'].controls['rpassword'].valid}">
-      <label for="rpassword">Repeat password</label>
-      <input type="password"
-             class="form-control"
-             formControlName="rpassword"
-             id="rpassword">
-      <div class="form-control-feedback"
-           *ngIf="submitted && !registerForm.controls['passwords'].controls['rpassword'].valid">Passwords not match</div>
-    </div>
+  <div class="form-group" [ngClass]="{'has-danger': submitted && !registerForm.controls['password'].valid}">
+    <label for="password">Password</label>
+    <input type="password"
+           class="form-control"
+           formControlName="password"
+           id="password">
+    <div class="form-control-feedback"
+         *ngIf="submitted && !registerForm.controls['password'].valid">Password can't be less then 4 letters</div>
+  </div>
+  <div class="form-group" [ngClass]="{'has-danger': submitted && !registerForm.controls['rpassword'].valid}">
+    <label for="rpassword">Repeat password</label>
+    <input type="password"
+           class="form-control"
+           formControlName="rpassword"
+           id="rpassword">
+    <div class="form-control-feedback"
+         *ngIf="submitted && !registerForm.controls['rpassword'].valid">Passwords not match</div>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
