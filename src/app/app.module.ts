@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AppRoutingModule } from "./shared/app-routing.module";
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
+import { AuthService } from "./shared/auth.service";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { RegisterSuccessComponent } from './components/register-success/register
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
