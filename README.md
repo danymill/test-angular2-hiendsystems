@@ -1,3 +1,7 @@
+# Task info
+
+Task info avaliable here: https://docs.google.com/document/d/1C94REKqLURZ-NhVuval2qGbMc-PuORunRYmGaX-n8ak/edit
+
 # HiendSystems.Task
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-beta.31.
