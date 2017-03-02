@@ -8,6 +8,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AppRoutingModule } from "./shared/app-routing.module";
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
 import { AuthService } from "./shared/auth.service";
+import { AuthGuard } from "./shared/auth.guard";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { AuthService } from "./shared/auth.service";
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

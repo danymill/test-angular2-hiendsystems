@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { RegisterComponent } from "../components/register/register.component";
 import { RegisterSuccessComponent } from "../components/register-success/register-success.component";
+import { AuthGuard } from "./auth.guard";
 
 const APP_ROUTES: Routes = [
   {
@@ -14,7 +15,8 @@ const APP_ROUTES: Routes = [
   {
     path: 'register-success',
     component: RegisterSuccessComponent,
-    data: { title: 'Confirmation'}
+    data: { title: 'Confirmation'},
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
