@@ -2,3 +2,8 @@
   max-height: 1em;
   width: auto;
 }
+
+.register-form {
+  max-width: 320px;
+  margin: 0 auto 2em;
+}
