@@ -5,19 +5,22 @@ import { User } from "./user.interface";
 
 @Injectable()
 export class AuthService {
-  public username: string;
+  private user: User;
 
   constructor() { }
 
   register(registerData: User): Observable<any> {
-    let {username} = registerData;
+    this.user = registerData;
     return new Observable(
       observer => {
         setTimeout(() => {
-          this.username = username;
-          observer.next(username);
-        }, 3000);
+          observer.next(this.user.username);
+        }, 2000);
       }
     );
+  }
+
+  getUsername() {
+    return (this.user) ? this.user.username : null;
   }
 }
