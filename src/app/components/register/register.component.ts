@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
+import { Router } from "@angular/router";
+
+import { AuthService } from "../../shared/auth.service";
 
 @Component({
   selector: 'hst-register',
@@ -10,9 +13,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   private submitted: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {
-
-  }
+  constructor(private formBuilder: FormBuilder, private as: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -50,7 +51,9 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.registerForm);
+    if (this.registerForm.valid) {
+      this.as.register(this.registerForm.value).subscribe(() => this.router.navigate(['/register-success']));
+    }
   }
 
 }
