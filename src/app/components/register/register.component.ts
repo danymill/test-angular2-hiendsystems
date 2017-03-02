@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
 
 @Component({
   selector: 'hst-register',
@@ -16,14 +16,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      userData: this.formBuilder.group({
-        username: ['', Validators.required],
-        login: ['', Validators.required],
-        email: ['',[
-          Validators.required,
-          this.isEmail
-        ]],
-      }),
+      username: ['', Validators.required],
+      login: ['', Validators.required],
+      email: ['',[
+        Validators.required,
+        this.isEmail
+      ]],
       password: ['', [
         Validators.required,
         Validators.minLength(4)
