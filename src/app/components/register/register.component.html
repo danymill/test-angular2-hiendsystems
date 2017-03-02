@@ -46,5 +46,5 @@
     <div class="form-control-feedback"
          *ngIf="submitted && !registerForm.controls['rpassword'].valid">Passwords not match</div>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Submit</button> <span class="loading" *ngIf="loading"><img src="assets/img/loading.gif" alt="loading..."></span>
 </form>

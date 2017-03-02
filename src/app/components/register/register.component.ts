@@ -12,6 +12,7 @@ import { AuthService } from "../../shared/auth.service";
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   private submitted: boolean = false;
+  private loading: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private as: AuthService, private router: Router) {}
 
@@ -52,7 +53,11 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.registerForm.valid) {
-      this.as.register(this.registerForm.value).subscribe(() => this.router.navigate(['/register-success']));
+      this.loading = true;
+      this.as.register(this.registerForm.value).subscribe(() => {
+        this.loading = false;
+        this.router.navigate(['/register-success']);
+      });
     }
   }
 
